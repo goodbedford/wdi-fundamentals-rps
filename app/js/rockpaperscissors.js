@@ -42,12 +42,10 @@ function getWinner(playerMove,computerMove) {
     // The rules of the game are that 'rock' beats 'scissors', 'scissors' beats 'paper', and 'paper' beats 'rock'.
     /* YOUR CODE HERE */
 
-    var pm = playerMove(),
-        cm = computerMove();
 
     /*
     var bothMoves = [];
-    bothMoves.push(playerMove(), computerMove());
+    bothMoves.push(playerMove, computerMove);
 
     switch (bothMoves.join(",")){
         case "rock,rock":
@@ -81,23 +79,23 @@ function getWinner(playerMove,computerMove) {
             winner = "error!!!, enter rock,paper,scissors";
     } */  
 
-    if ( (pm === "rock") && (cm === "rock") ) {
+    if ( (playerMove === "rock") && (computerMove === "rock") ) {
         winner = "tie";
-    } else if ( (pm === "paper") && (cm === "paper") ) {
+    } else if ( (playerMove === "paper") && (computerMove === "paper") ) {
         winner = "tie";
-    } else if ( (pm === "scissors") && (cm === "scissors") ) {
+    } else if ( (playerMove === "scissors") && (computerMove === "scissors") ) {
         winner = "tie";
-    } else if ( (pm === "paper") && (cm === "rock") ) {
+    } else if ( (playerMove === "paper") && (computerMove === "rock") ) {
         winner = "player";
-    } else if ( (pm === "rock") && (cm === "scissors") ) {
+    } else if ( (playerMove === "rock") && (computerMove === "scissors") ) {
         winner = "player";
-    } else if ( (pm === "scissors") && (cm === "paper") ) {
+    } else if ( (playerMove === "scissors") && (computerMove === "paper") ) {
         winner = "paper";
-    } else if ( (pm === "scissors") && (cm === "rock") ) {
+    } else if ( (playerMove=== "scissors") && (computerMove === "rock") ) {
         winner = "computer";
-    } else if ( (pm === "rock") && (cm === "paper") ) {
-        winnner = "computer";
-    } else if ( (pm === "paper") && (cm === "scissors") ) {
+    } else if ( (playerMove === "rock") && (computerMove === "paper") ) {
+        winner = "computer";
+    } else if ( (playerMove === "paper") && (computerMove === "scissors") ) {
         winner = "computer";
     } else {
         winner = "error wrong input";
@@ -111,7 +109,80 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
+    /* YOUR CoDE HERE */
+    var playerMove,
+        computerMove,
+        counter = 1,
+        ties = 0;
+
+    function statLine(){
+        console.log("");
+        console.log("Game Stats");
+        console.log("Player Wins: " + playerWins +
+                    "  " + "Computer Wins: "  +
+                    computerWins + "  " + "Ties: " + ties);
+        console.log("");
+    }
+
+    function gameRound() { 
+        console.log("");
+        console.log("Round: " + counter);
+        console.log("Player Move: " + playerMove +
+                    "  |  Computer Move: " + computerMove);
+    }
+
+    for (counter; !(playerWins === 5 || computerWins === 5); counter++){
+        playerMove = getPlayerMove(playerMove);
+        computerMove = getComputerMove(computerMove);
+
+        gameRound();
+
+        switch (getWinner(playerMove, computerMove)){
+            case "tie":
+                ties += 1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            case "player":
+                playerWins +=1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            case "computer":
+                computerWins +=1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            default:
+                console.log("error");
+                console.log("");
+                playerMove = null;
+                computerMove = null;
+
+        }
+
+
+
+    }
+    
+
     return [playerWins, computerWins];
 }
+
+
+
+
+playToFive();
+
+
+
+
+
+
+
+
+
 
