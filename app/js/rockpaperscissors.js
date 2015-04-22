@@ -45,6 +45,42 @@ function getWinner(playerMove,computerMove) {
     var pm = playerMove(),
         cm = computerMove();
 
+    /*
+    var bothMoves = [];
+    bothMoves.push(playerMove(), computerMove());
+
+    switch (bothMoves.join(",")){
+        case "rock,rock":
+            winner = "tie";
+            break;
+        case "paper,paper":
+            winner = "tie";
+            break;
+        case "scissors,scissors":
+            winner = "tie";
+            break;
+        case "paper,rock":
+            winner = "player";
+            break;
+        case "rock,scissors":
+            winner = "player";
+            break;
+        case "scissors,paper":
+            winner = "player";
+            break;
+        case "rock,paper":
+            winner ="computer";
+            break;
+        case "scissors,rock":
+            winner ="computer";
+            break;
+        case "paper,scissors":
+            winner ="computer";
+            break;
+        default:
+            winner = "error!!!, enter rock,paper,scissors";
+    } */  
+
     if ( (pm === "rock") && (cm === "rock") ) {
         winner = "tie";
     } else if ( (pm === "paper") && (cm === "paper") ) {
