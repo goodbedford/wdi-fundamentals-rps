@@ -172,10 +172,77 @@ function playToFive() {
     return [playerWins, computerWins];
 }
 
+function playTo(x) {
+    console.log("Let's play Rock, Paper, Scissors");
+    var playerWins = 0;
+    var computerWins = 0;
+    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
+    /* YOUR CoDE HERE */
+    var playerMove,
+        computerMove,
+        counter = 1,
+        ties = 0;
+
+    function statLine(){
+        console.log("");
+        console.log("Game Stats");
+        console.log("Player Wins: " + playerWins +
+                    "  " + "Computer Wins: "  +
+                    computerWins + "  " + "Ties: " + ties);
+        console.log("");
+    }
+
+    function gameRound() { 
+        console.log("");
+        console.log("Round: " + counter);
+        console.log("Player Move: " + playerMove +
+                    "  |  Computer Move: " + computerMove);
+    }
+
+    for (counter; !(playerWins === x || computerWins === x); counter++){
+        playerMove = getPlayerMove(playerMove);
+        computerMove = getComputerMove(computerMove);
+
+        gameRound();
+
+        switch (getWinner(playerMove, computerMove)){
+            case "tie":
+                ties += 1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            case "player":
+                playerWins +=1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            case "computer":
+                computerWins +=1;
+                statLine();
+                playerMove = null;
+                computerMove = null;
+                break;
+            default:
+                console.log("error");
+                console.log("");
+                playerMove = null;
+                computerMove = null;
+
+        }
 
 
 
-playToFive();
+    }
+    
+
+    return [playerWins, computerWins];
+}
+
+
+
+playTo(4);
 
 
 
